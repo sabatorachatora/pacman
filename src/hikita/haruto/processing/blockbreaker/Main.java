@@ -11,7 +11,7 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
-        super.draw();
+        rect(10, 10, 10, 10);
     }
 
     public static void main(String[] args){
