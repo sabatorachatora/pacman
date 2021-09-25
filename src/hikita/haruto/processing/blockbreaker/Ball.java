@@ -2,7 +2,7 @@ package hikita.haruto.processing.blockbreaker;
 
 import processing.core.PApplet;
 
-class Ball {
+class Ball implements Collision {
     int x;
     int y;
     int dx;
@@ -28,5 +28,15 @@ class Ball {
         pApplet.strokeWeight(10);
         pApplet.stroke(255);
         pApplet.point(x, y);
+    }
+
+    @Override
+    public boolean isHit(int x, int y) {
+        return false;
+    }
+
+    @Override
+    public void onAction(int x, int y) {
+        this.dy = this.dy*-1;
     }
 }
