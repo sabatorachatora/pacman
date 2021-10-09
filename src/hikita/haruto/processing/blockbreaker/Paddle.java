@@ -19,8 +19,10 @@ class Paddle implements Collision {
     }
 
     public void update(PApplet pApplet) {
-        if(pApplet.keyCode == 37) x = x -5;
-        if(pApplet.keyCode == 39) x = x +5;
+        if(pApplet.keyPressed){
+            if (pApplet.keyCode == 37) x -=5;
+            if(pApplet.keyCode == 39) x +=5;
+        }
     }
 
     @Override

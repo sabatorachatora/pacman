@@ -24,7 +24,7 @@ class Stage {
 
         int startXPos = space/2;
         for(int i=0; i<n; i++){
-            Block block = new Block(startXPos, 100);
+            Block block = new Block(startXPos, 10);
             blocks.add(block);
             startXPos = startXPos + (BW+BG);
         }
