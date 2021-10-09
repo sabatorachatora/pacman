@@ -22,9 +22,10 @@ class Stage {
         int n = width/(BW+BG);
         int space = width - (BW+BG) * n + BG;
 
-        int startXPos = space/2;
+        int halfSpace = space/2;
+        int startXPos = halfSpace;
         for(int i=0; i<n; i++){
-            Block block = new Block(startXPos, 10);
+            Block block = new Block(startXPos, halfSpace);
             blocks.add(block);
             startXPos = startXPos + (BW+BG);
         }
@@ -38,6 +39,12 @@ class Stage {
         if(paddle.isHit(bx, by)){
             ball.onAction(paddle.x, paddle.y);
         }
+        for(int i=0; i<blocks.size(); i++){
+            Block o = blocks.get(i);
+            if(o.isHit(bx, by)){
+                ball.onAction(o.x, o.y);
+            }
+        }
 
         ball.update(pApplet);
         paddle.update(pApplet);
@@ -50,7 +57,8 @@ class Stage {
 
         //ブロックの描画
         for(int i=0; i<blocks.size(); i++){
-            blocks.get(i).draw(pApplet);
+            Block o = blocks.get(i);
+            o.draw(pApplet);
         }
     }
 
