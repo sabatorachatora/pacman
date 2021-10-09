@@ -2,11 +2,32 @@ package hikita.haruto.processing.blockbreaker;
 
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Stage {
     Ball ball = new Ball();
     Paddle paddle = new Paddle();
+    List<Block> blocks = new ArrayList<>();
 
-    public Stage() {
+    public Stage(PApplet pApplet) {
+
+        int width = pApplet.width;
+        int height = pApplet.height;
+
+        int BW = Block.WIDTH;
+        int BH = Block.HEIGHT;
+        int BG = 5;
+
+        int n = width/(BW+BG);
+        int space = width - (BW+BG) * n + BG;
+
+        int startXPos = space/2;
+        for(int i=0; i<n; i++){
+            Block block = new Block(startXPos, 100);
+            blocks.add(block);
+            startXPos = startXPos + (BW+BG);
+        }
     }
 
     public void update(PApplet pApplet) {
@@ -26,6 +47,11 @@ class Stage {
         pApplet.background(128);
         ball.draw(pApplet);
         paddle.draw(pApplet);
+
+        //ブロックの描画
+        for(int i=0; i<blocks.size(); i++){
+            blocks.get(i).draw(pApplet);
+        }
     }
 
 }
