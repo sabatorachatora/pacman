@@ -51,8 +51,8 @@ public class Main extends PApplet {
         for(int i=0; i<stage.length; i++){
 
             int y =i*11;
-            for(int j=0; i<stage[i].length(); j++){
-                char c = stage[i].charAt(j);
+            for(int j=0; j<stage[i].length();j++){  //メモ{j++を削除して試験、エラー発生せず : j<stage[i]...がi<stage[i]...になっていた、j++は関係なし
+                char c = stage[i].charAt(j);  //メモ{charAt(j)の()内をてきとーなもので代入して試験、エラー発生せず : 上段エラーのとばっちり、修正の必要なし
                 if(c == '1') {
                     int x = j*11;
                     this.noStroke();
