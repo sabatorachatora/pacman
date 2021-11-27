@@ -7,14 +7,14 @@ public class Main extends PApplet {
     String[] stage = {
             "111111111111111111111111111111111111111",
             "100000000000000000000000000000000000111",
-            "101111000000000001111111110111111110111",
-            "100000000000000001111111110111111110011",
-            "110111000000000001111111110111111111001",
-            "110111111110111111111111110111111111101",
-            "100000000000000000000000000001111111101",
-            "111111101101111111111011111111111111101",
-            "111111100000000000000011111111111111101",
-            "111111101111011111111011111111111111001",
+            "101111000000000001101111110111011110111",
+            "100000000000000000000111110000000000011",
+            "110111000000000001110011110111011101001",
+            "000111111110111111111011110111011100001",
+            "110000000000000000000000000000001101101",
+            "111111101101111111111011111111100001101",
+            "111111100000000000000011111111110111101",
+            "111111101111011111111000000000000000001",
             "111111111111111111111111111111111111111",
 
     };
@@ -23,6 +23,10 @@ public class Main extends PApplet {
     int pacmanY = 5;
 
     int stageweight = 11;
+    long lastProcTime;
+    boolean bKeyPressed = false;
+    int bKeyCode = keyCode;
+
 
     @Override
     public void settings() {
@@ -36,18 +40,34 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
-        System.out.println(keyCode);
-        if(keyPressed){
-            if(keyCode == 38) pacmanY--;
-            if(keyCode == 40) pacmanY++;
-            if(keyCode == 37) pacmanX--;
-            if(keyCode == 39) pacmanX++;
 
+        //移動処理
+        if(!bKeyPressed && keyPressed){
+            bKeyCode = keyCode;
+            bKeyPressed = true;
+        }
 
+        long now = System.currentTimeMillis();
+        long dt = now - lastProcTime;
+        if(dt > 200) {
+            System.out.println(bKeyCode);
+            //if (bKeyPressed) {
+                if (bKeyCode == 38) pacmanY-=1;
+                if (bKeyCode == 40) pacmanY+=1;
+                if (bKeyCode == 37) pacmanX-=1;
+                if (bKeyCode == 39) pacmanX+=1;
+            //}
+            lastProcTime = now;
+            bKeyPressed = false;
+
+            if(pacmanX == '1' | pacmanY == '1'){
+                pacmanX = 0;
+                pacmanY = 0;
+            }
         }
 
         this.background(0);
-        this.fill(0);
+        this.fill(255);
         for(int i=0; i<stage.length; i++){
 
             int y =i*11;
