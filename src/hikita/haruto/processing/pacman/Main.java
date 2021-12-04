@@ -56,21 +56,32 @@ public class Main extends PApplet {
         if(dt > 20) {
             System.out.println(bKeyCode);
             //if (bKeyPressed) {
-                if (bKeyCode == 38) pacmanY-=0.2;
-                if (bKeyCode == 40) pacmanY+=0.2;
-                if (bKeyCode == 37) pacmanX-=0.2;
-                if (bKeyCode == 39) pacmanX+=0.2;
+                if (bKeyCode == 38) by-=0.2;
+                if (bKeyCode == 40) by+=0.2;
+                if (bKeyCode == 37) bx-=0.2;
+                if (bKeyCode == 39) bx+=0.2;
             //}
             lastProcTime = now;
             bKeyPressed = false;
 
-            if(bx>0 && bx<stage.length && by>0 && by<stage[by].length()){
-                if(stage[by].charAt(bx) == '0') {
+            if(bx>0 && bx<stage.length && by>0 && by<stage[(int)by].length()){
+                if(stage[(int)by].charAt((int) bx) == '0') {
                     pacmanX = bx;
                     pacmanY = by;
                 }
             }
         }
+        System.out.println("bx = " + bx);
+        System.out.println("by = " + by);
+
+
+        Math.round(bx);
+        Math.round(by);
+
+        System.out.println("bx = " + bx);
+        System.out.println("by = " + by);
+
+
 
         this.background(0);
         this.fill(255);
