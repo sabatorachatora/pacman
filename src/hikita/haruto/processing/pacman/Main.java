@@ -64,24 +64,19 @@ public class Main extends PApplet {
             lastProcTime = now;
             bKeyPressed = false;
 
-            if(bx>0 && bx<stage.length && by>0 && by<stage[(int)by].length()){
-                if(stage[(int)by].charAt((int) bx) == '0') {
+            int tx = Math.round(bx);
+            int ty = Math.round(by);
+
+            if(ty>=0 && ty<stage.length && tx>=0 && tx<stage[ty].length()){
+                System.out.println("check1");
+                if(stage[ty].charAt(tx) == '0') {
                     pacmanX = bx;
                     pacmanY = by;
                 }
             }
         }
-        System.out.println("bx = " + bx);
-        System.out.println("by = " + by);
-
-
-        Math.round(bx);
-        Math.round(by);
-
-        System.out.println("bx = " + bx);
-        System.out.println("by = " + by);
-
-
+        //System.out.println("bx = " + bx);
+        //System.out.println("by = " + by);
 
         this.background(0);
         this.fill(255);
