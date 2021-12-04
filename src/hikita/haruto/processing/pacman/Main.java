@@ -19,8 +19,8 @@ public class Main extends PApplet {
 
     };
 
-    int pacmanX = 0;
-    int pacmanY = 5;
+    float pacmanX = 0;
+    float pacmanY = 5;
 
     int stageweight = 11;
     long lastProcTime;
@@ -42,6 +42,10 @@ public class Main extends PApplet {
     public void draw() {
 
         //移動処理
+
+        float bx = pacmanX;
+        float by = pacmanY;
+
         if(!bKeyPressed && keyPressed){
             bKeyCode = keyCode;
             bKeyPressed = true;
@@ -49,20 +53,22 @@ public class Main extends PApplet {
 
         long now = System.currentTimeMillis();
         long dt = now - lastProcTime;
-        if(dt > 200) {
+        if(dt > 20) {
             System.out.println(bKeyCode);
             //if (bKeyPressed) {
-                if (bKeyCode == 38) pacmanY-=1;
-                if (bKeyCode == 40) pacmanY+=1;
-                if (bKeyCode == 37) pacmanX-=1;
-                if (bKeyCode == 39) pacmanX+=1;
+                if (bKeyCode == 38) pacmanY-=0.2;
+                if (bKeyCode == 40) pacmanY+=0.2;
+                if (bKeyCode == 37) pacmanX-=0.2;
+                if (bKeyCode == 39) pacmanX+=0.2;
             //}
             lastProcTime = now;
             bKeyPressed = false;
 
-            if(pacmanX == '1' | pacmanY == '1'){
-                pacmanX = 0;
-                pacmanY = 0;
+            if(bx>0 && bx<stage.length && by>0 && by<stage[by].length()){
+                if(stage[by].charAt(bx) == '0') {
+                    pacmanX = bx;
+                    pacmanY = by;
+                }
             }
         }
 
