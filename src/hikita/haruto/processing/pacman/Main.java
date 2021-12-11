@@ -1,3 +1,8 @@
+/***
+ * 作業内容：めり込みバグの修正（76行目前後）
+ */
+
+
 package hikita.haruto.processing.pacman;
 
 import processing.core.PApplet;
@@ -56,10 +61,10 @@ public class Main extends PApplet {
         if(dt > 20) {
             System.out.println(bKeyCode);
             //if (bKeyPressed) {
-                if (bKeyCode == 38) by-=0.2;
-                if (bKeyCode == 40) by+=0.2;
-                if (bKeyCode == 37) bx-=0.2;
-                if (bKeyCode == 39) bx+=0.2;
+                if (bKeyCode == 38) by-=0.4;
+                if (bKeyCode == 40) by+=0.4;
+                if (bKeyCode == 37) bx-=0.4;
+                if (bKeyCode == 39) bx+=0.4;
             //}
             lastProcTime = now;
             bKeyPressed = false;
@@ -83,8 +88,8 @@ public class Main extends PApplet {
         for(int i=0; i<stage.length; i++){
 
             int y =i*11;
-            for(int j=0; j<stage[i].length();j++){  //メモ{j++を削除して試験、エラー発生せず : j<stage[i]...がi<stage[i]...になっていた、j++は関係なし
-                char c = stage[i].charAt(j);  //メモ{charAt(j)の()内をてきとーなもので代入して試験、エラー発生せず : 上段エラーのとばっちり、修正の必要なし
+            for(int j=0; j<stage[i].length();j++){  //メモ{j++を削除して試験、エラー発生せず : j<stage[i]...がi<stage[i]...になっていた、j++は関係なし(修正済)
+                char c = stage[i].charAt(j);  //メモ{charAt(j)の()内をてきとーなもので代入して試験、エラー発生せず : 上段エラーのとばっちり、修正の必要なし(--)
                 if(c == '1') {
                     int x = j*11;
                     this.noStroke();
