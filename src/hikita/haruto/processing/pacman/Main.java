@@ -1,6 +1,4 @@
-/***
- * 作業内容：めり込みバグの修正（76行目前後）
- */
+//作業内容：めり込みバグの修正（76行目前後）
 
 
 package hikita.haruto.processing.pacman;
